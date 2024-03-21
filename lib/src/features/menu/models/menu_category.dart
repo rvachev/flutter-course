@@ -1,0 +1,3 @@
+class MenuCategory {
+  const MenuCategory();
+}
