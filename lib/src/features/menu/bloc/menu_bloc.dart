@@ -18,8 +18,11 @@ final class MenuBloc extends Bloc<MenuEvent, MenuState> {
     required ICategoryRepository categoryRepository,
   }) : _menuRepository = menuRepository, _categoryRepository = categoryRepository, super(const IdleMenuState()) {
     on<MenuEvent>((event, emit) {
-      
-    },);
+      switch(event) {
+        case LoadCategoriesEvent(): _loadCategories(event, emit);
+        case LoadPageEvent(): _loadMenuItems(event, emit);
+      }
+    });
   }
 
   MenuCategory? _currentPaginatedCategory;
